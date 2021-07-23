@@ -1,0 +1,354 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "Backend"
+    },
+    "host": "localhost",
+    "basePath": "/docs",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "paths": {
+        "/employee": {
+            "get": {
+                "tags": [
+                    "employee"
+                ],
+                "summary": "",
+                "description": "Список сотрудников",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GetEmployee"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "employee"
+                ],
+                "summary": "",
+                "description": "Добавление сотрудника",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "first_name - имя ,surname - фамилия, patronymic - отчество, sex - пол, wage - зп, все поля обязательные кроме пола",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateEmployee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Сотрудник добавлен!"
+                    }
+                }
+            }
+        },
+        "/employee/{id}": {
+            "put": {
+                "tags": [
+                    "employee"
+                ],
+                "summary": "",
+                "description": "Изменение сотрудника",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "first_name - имя ,surname - фамилия, patronymic - отчество, sex - пол, wage - зп, все поля обязательные кроме пола",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EditEmployee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Сотрудник изменен!"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "employee"
+                ],
+                "summary": "",
+                "description": "Удаление сотрудника",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Сотрудник удален!"
+                    }
+                }
+            }
+        },
+        "/department": {
+            "get": {
+                "tags": [
+                    "department"
+                ],
+                "summary": "",
+                "description": "Список отделов",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/GetDepartment"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "department"
+                ],
+                "summary": "",
+                "description": "Добавление отдела",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "name - название отдела обязательное поле",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateDepartment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Отдел добавлен!"
+                    }
+                }
+            }
+        },
+        "/department/{id}": {
+            "put": {
+                "tags": [
+                    "department"
+                ],
+                "summary": "",
+                "description": "Изменение отдела",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "name - название отдела обязательное поле",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EditDepartment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Отдел изменен!"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "department"
+                ],
+                "summary": "",
+                "description": "Удаление отдела",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Отдел удален!"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "GetEmployee": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "FIO": {
+                        "type": "string",
+                        "example": "pupok pupok pupok"
+                    },
+                    "sex": {
+                        "type": "string",
+                        "example": "m"
+                    },
+                    "wage": {
+                        "type": "integer",
+                        "example": 23
+                    }
+                }
+            }
+        },
+        "CreateEmployee": {
+            "type": "object",
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "example": "pupok"
+                },
+                "surname": {
+                    "type": "string",
+                    "example": "pupok"
+                },
+                "patronymic": {
+                    "type": "string",
+                    "example": "pupok"
+                },
+                "sex": {
+                    "type": "string",
+                    "example": "m"
+                },
+                "wage": {
+                    "type": "integer",
+                    "example": 23
+                },
+                "department_ids": {
+                    "type": "integer",
+                    "example": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        "EditEmployee": {
+            "type": "object",
+            "properties": {
+                "first_name": {
+                    "type": "string",
+                    "example": "pupok"
+                },
+                "surname": {
+                    "type": "string",
+                    "example": "pupok"
+                },
+                "patronymic": {
+                    "type": "string",
+                    "example": "pupok"
+                },
+                "sex": {
+                    "type": "string",
+                    "example": "m"
+                },
+                "wage": {
+                    "type": "integer",
+                    "example": 23
+                },
+                "department_ids": {
+                    "type": "integer",
+                    "example": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        "GetDepartment": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "pupok"
+                    },
+                    "count_employees": {
+                        "type": "integer",
+                        "example": 13
+                    },
+                    "max_wage": {
+                        "type": "integer",
+                        "example": 23
+                    }
+                }
+            }
+        },
+        "CreateDepartment": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "pupok"
+                }
+            }
+        },
+        "EditDepartment": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "pupok"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}
